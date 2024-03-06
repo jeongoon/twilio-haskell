@@ -169,6 +169,12 @@ data TwilioException
   | InvalidAuthToken   !Text
   | InvalidCredentials
   | UnexpectedResponse !(Response LBS.ByteString)
-  deriving (Show, Eq, Typeable)
+  deriving (Show, Typeable)
+
+-- The 'deriving Eq' has been removed from the Response,
+-- and it's not harmful to remove it here as well.
+--
+-- Please see the link below for reference:
+-- https://github.com/snoyberg/http-client/blob/a1c5e346d1d3087a0a29442e6856bc1d865063f9/http-client/Network/HTTP/Client/Types.hs#L731
 
 instance Exception TwilioException
